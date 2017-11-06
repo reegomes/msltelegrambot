@@ -6,6 +6,7 @@
 
 - Have AutoIT installed: [Here](Https://www.autoitscript.com/cgi-bin/getfile.pl?autoit3/autoit-v3-setup.exe "Click Here")
 - A Telegram account: [Here](Https://telegram.org/ "Click Here")
+- Python3: [Here](https://www.python.org/downloads/ "Click Here")
 
 *Steps:*
 
@@ -31,8 +32,3 @@ Save and close the file.
 ![](https://image.prntscr.com/image/2JRWF-b-RTCQlb5MmbaeKg.png)
 
 With the msl-bot.au3 running, open the "other msl bot" and *See the magic happens*..
-
-
-I accept suggestions.
-Thanks to Kev for creating the bot.
-I accept a role position in the Discord
