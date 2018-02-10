@@ -11,7 +11,7 @@ IDT = cfg.getint("Main", "id")
 
 from datetime import date
 today = date.today()
-today2 = today.strftime('%d.%m.%Y')
+today2 = today.strftime('%d.%m.%Y.txt')
 
 bot = telepot.Bot(apitoken)
 from telepot.loop import MessageLoop
@@ -28,17 +28,19 @@ def monitorar(path):
                 
 for idx, linha in enumerate(monitorar(today2)):
     print("{:5d}: {}".format(idx, linha))
-    if "Error:" in linha:
+    if "No tickets remaining." in linha:
         bot.sendMessage(IDT, linha)
-    elif "Grade: 6*" in linha:
+    elif "Kept: 6*" in linha:
         bot.sendMessage(IDT, linha)
-    elif "Refill gems" in linha:
+    elif "|400" in linha:
         bot.sendMessage(IDT, linha)
-    elif "Finished" in linha:
+    elif "Farm Forever has ended." in linha:
         bot.sendMessage(IDT, linha)
-    elif "Been stuck for 10 minutes!" in linha:
+    elif "doDailies  6" in linha:
         bot.sendMessage(IDT, linha)
     elif "Catching astromons..." in linha:
         bot.sendMessage(IDT, linha)
-    elif "Caught" in linha:
+    elif "Lost a PvP Battle." in linha:
+        bot.sendMessage(IDT, linha)
+    elif "Won a PvP battle!" in linha:
         bot.sendMessage(IDT, linha)
