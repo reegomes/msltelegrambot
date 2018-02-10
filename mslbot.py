@@ -32,7 +32,7 @@ for idx, linha in enumerate(monitorar(today2)):
         bot.sendMessage(IDT, linha)
     elif "Kept: 6*" in linha:
         bot.sendMessage(IDT, linha)
-    elif "|400" in linha:
+    elif "Data add 'Refill' as Type:3 with value:" in linha:
         bot.sendMessage(IDT, linha)
     elif "Farm Forever has ended." in linha:
         bot.sendMessage(IDT, linha)
