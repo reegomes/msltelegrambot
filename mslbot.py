@@ -12,9 +12,6 @@ IDT = cfg.getint("Main", "id")
 from datetime import date
 today = date.today()
 today2 = today.strftime('%d.%m.%Y.txt')
-pvpwin = 0
-pvplost = 0
-refill = 0
 
 bot = telepot.Bot(apitoken)
 from telepot.loop import MessageLoop
@@ -28,6 +25,13 @@ def monitorar(path):
                 yield nova_linha
             else:
                 time.sleep(1.0)
+                
+pvpwin = 0
+pvplost = 0
+gem6 = 0
+gem5 = 0
+energy = 0
+astrogem = 0
 
 for idx, linha in enumerate(monitorar(today2)):
     print("{:5d}: {}".format(idx, linha))
@@ -35,9 +39,12 @@ for idx, linha in enumerate(monitorar(today2)):
         bot.sendMessage(IDT, "No PvP tickets remaining")
     elif "Kept: 6*" in linha:
         bot.sendMessage(IDT, "Kept 6* Gem")
-    elif "Data add 'Refill' as Type:3 with value:" in linha:
-    	refill += 30
-        bot.sendMessage(IDT, "Refill " + str(refill))
+        gem6 += 1
+        bot.sendMessage(IDT, "Gems: " + str(gem6))
+    elif "Kept: 5*" in linha:
+        bot.sendMessage(IDT, "Kept 5* Gem")
+        gem5 += 1
+        bot.sendMessage(IDT, "Gems: " + str(gem5))
     elif "Farm Forever has ended." in linha:
         bot.sendMessage(IDT, "Farm Forever has Ended")
     elif "doDailies  6" in linha:
@@ -47,8 +54,13 @@ for idx, linha in enumerate(monitorar(today2)):
     elif "Lost a PvP Battle." in linha:
         bot.sendMessage(IDT, "Lost a PvP Battle.")
         pvplost += 1
-        bot.sendMessage(IDT, "Total Defeats " + str(vplost))
+        bot.sendMessage(IDT, "Total Defeats " + str(pvplost))
     elif "Won a PvP battle!" in linha:
         bot.sendMessage(IDT, "Won a PvP battle!")
-		pvpwin += 1
+        pvpwin += 1
         bot.sendMessage(IDT, "Total Victories " + str(pvpwin))
+    elif "Refilled energy" in linha:
+        energy += 80
+        astrogem += 30
+        bot.sendMessage(IDT, "Refilled Energy: " + str(energy))
+        bot.sendMessage(IDT, "Spent Astrogem: " + str(astrogem))
